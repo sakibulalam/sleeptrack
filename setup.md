@@ -12,3 +12,7 @@
    ```bash
    rails generate model User name:string
    ```
+4. Generate `SleepRecord` files
+   ```bash
+   rails generate model SleepRecord user:references start_time:timestamp end_time:timestamp duration:integer
+   ```
