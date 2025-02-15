@@ -8,3 +8,7 @@
    ```bash
    gem install bundler:2.6.3
    ```
+3. Generate `User` files
+   ```bash
+   rails generate model User name:string
+   ```
