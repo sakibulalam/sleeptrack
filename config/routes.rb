@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post "authentication/login"
+
+      # Sleep Records endpoints
+      post "sleep_records/clock_in", to: "sleep_records#clock_in"
+      post "sleep_records/clock_out", to: "sleep_records#clock_out"
+      get "sleep_records", to: "sleep_records#index"
+
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

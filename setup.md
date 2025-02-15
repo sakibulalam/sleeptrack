@@ -24,3 +24,7 @@
    ```bash
    rails generate controller Api::V1::Authentication login
    ```
+7. Generate SleepRecords API controller
+   ```bash
+   rails generate controller Api::V1::SleepRecords index clock_in clock_out
+   ```
