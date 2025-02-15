@@ -16,3 +16,11 @@
    ```bash
    rails generate model SleepRecord user:references start_time:timestamp end_time:timestamp duration:integer
    ```
+5. Add password digest to User model
+   ```bash
+   rails generate migration AddPasswordDigestToUsers password_digest:string
+   ```
+6. Generate JWT authentication files
+   ```bash
+   rails generate controller Api::V1::Authentication login
+   ```
