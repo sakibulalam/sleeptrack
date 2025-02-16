@@ -12,7 +12,7 @@ class Api::V1::SleepRecordsController < ApplicationController
       return
     end
 
-    sleep_record = current_user.sleep_records.new(start_time: Time.current)
+    sleep_record = current_user.sleep_records.new(start_time: params[:start_time])
 
     if sleep_record.save
       render json: sleep_record, status: :created
@@ -25,8 +25,11 @@ class Api::V1::SleepRecordsController < ApplicationController
     sleep_record = current_user.sleep_records.find_by(end_time: nil)
 
     if sleep_record
-      sleep_record.update(end_time: Time.current)
-      render json: sleep_record
+      if sleep_record.update(end_time: params[:end_time])
+        render json: sleep_record
+      else
+        render json: { errors: sleep_record.errors.full_messages }, status: :unprocessable_entity
+      end
     else
       render json: { error: "No active sleep record found" }, status: :not_found
     end
