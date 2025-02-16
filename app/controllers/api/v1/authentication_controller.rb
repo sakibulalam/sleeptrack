@@ -10,7 +10,7 @@ class Api::V1::AuthenticationController < ApplicationController
 
       render json: { token: token }, status: :ok
     else
-      render json: { error: 'Invalid credentials' }, status: :unauthorized
+      render json: { error: "Invalid credentials" }, status: :unauthorized
     end
   end
 end

@@ -1,6 +1,6 @@
 class Api::V1::SleepRecordsController < ApplicationController
   include Authenticatable
-  
+
   def index
     sleep_records = current_user.sleep_records.order(created_at: :desc)
     render json: sleep_records
@@ -8,7 +8,7 @@ class Api::V1::SleepRecordsController < ApplicationController
 
   def clock_in
     if current_user.sleep_records.exists?(end_time: nil)
-      render json: { error: 'You already have an active sleep record' }, status: :unprocessable_entity
+      render json: { error: "You already have an active sleep record" }, status: :unprocessable_entity
       return
     end
 
@@ -28,7 +28,7 @@ class Api::V1::SleepRecordsController < ApplicationController
       sleep_record.update(end_time: Time.current)
       render json: sleep_record
     else
-      render json: { error: 'No active sleep record found' }, status: :not_found
+      render json: { error: "No active sleep record found" }, status: :not_found
     end
   end
 end
