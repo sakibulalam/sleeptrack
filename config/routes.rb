@@ -8,8 +8,14 @@ Rails.application.routes.draw do
       post "sleep_records/clock_out", to: "sleep_records#clock_out"
       get "sleep_records", to: "sleep_records#index"
 
+      # Follows endpoints
+      post :follow, to: "follows#create"
+      delete :unfollow, to: "follows#destroy"
+      get :following, to: "follows#following"
+      get :followers, to: "follows#followers"
     end
   end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

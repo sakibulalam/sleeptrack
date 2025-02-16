@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_15_163455) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_15_170000) do
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_follows_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_follows_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
   create_table "sleep_records", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "start_time"
@@ -28,5 +38,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_15_163455) do
     t.string "password_digest"
   end
 
+  add_foreign_key "follows", "users", column: "followed_id"
+  add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "sleep_records", "users"
 end
