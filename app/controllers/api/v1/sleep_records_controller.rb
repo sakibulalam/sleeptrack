@@ -34,4 +34,9 @@ class Api::V1::SleepRecordsController < ApplicationController
       render json: { error: "No active sleep record found" }, status: :not_found
     end
   end
+
+  def following_records
+    sleep_records = SleepRecord.from_followed_users(current_user)
+    render json: sleep_records, include: { user: { only: [ :id, :name ] } }
+  end
 end

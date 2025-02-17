@@ -46,6 +46,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Time manipulation for testing [https://github.com/travisjeffery/timecop]
+  gem "timecop"
 end
 
 group :development do

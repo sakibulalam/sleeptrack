@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post "sleep_records/clock_in", to: "sleep_records#clock_in"
       post "sleep_records/clock_out", to: "sleep_records#clock_out"
       get "sleep_records", to: "sleep_records#index"
+      get "sleep_records/following", to: "sleep_records#following_records"
 
       # Follows endpoints
       post :follow, to: "follows#create"
